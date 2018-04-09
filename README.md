@@ -12,3 +12,11 @@ Please make sure to not edit `index.html` directly, but copy-paste the source of
 * Remove items in the shopping cart
 * Edit items in the shopping cart
 * "Pay" the items
+
+---
+
+## TODO Ideas
+* Shopping Cart as modal
+* Filter
+* Change product amount
+* Remove product from cart
