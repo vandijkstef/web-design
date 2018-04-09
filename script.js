@@ -4,10 +4,10 @@
 		productButtons.forEach((button) => {
 			console.log(button);
 		});
-	}
+	};
 
 	if ('addEventListener' in document && 'querySelector' in document) {
-		document.addEventListener("DOMContentLoaded", () => {
+		document.addEventListener('DOMContentLoaded', () => {
 			SetProductButtons();
 		});
 	} else {
