@@ -9,6 +9,8 @@ $yellow: #FFD311;
 $blue: #00ABD5;
 $blueDark: #009DD3;
 
+$white: rgba(255, 255, 255, 1);
+
 * {
 	box-sizing: border-box;
 }
@@ -27,7 +29,6 @@ body {
 		width: 20em;
 		background-color: $coffeeLight;
 		color: $coffeeDark;
-		// border: .8rem solid $coffeeLight;
 		padding: 1rem;
 		padding-bottom: 4em;
 		margin-bottom: 2rem;
@@ -38,8 +39,6 @@ body {
 			position: absolute;
 			top: -12em;
 			right: 0;
-			// left: 60%;
-			// transform: translateX(-50%);
 			width: 14em;
 		}
 		button {
@@ -54,7 +53,6 @@ body {
 		}
 		h3 {
 			font-size: 1.6em;
-			// margin-bottom: 0;
 		}
 		p {
 			font-style: italic;
@@ -69,8 +67,15 @@ body {
 
 svg {
 	.light {
-		opacity: .3; // TODO: Add animation
+		opacity: .3;
+		animation: glare 4s ease-in-out infinite;
 	}
+}
+
+@keyframes glare {
+	0% { opacity: .3; }
+	50% { opacity: .5; }
+	100% { opacity: .3; }
 }
 
 #cart {

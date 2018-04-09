@@ -60,6 +60,19 @@ body {
 
 svg .light {
   opacity: .3;
+  animation: glare 4s ease-in-out infinite;
+}
+
+@keyframes glare {
+  0% {
+    opacity: .3;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: .3;
+  }
 }
 
 #cart table {
