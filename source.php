@@ -8,7 +8,7 @@
 		<title>Beans on Demand</title>
 
 		<link rel="stylesheet" href="style.css">
-		<script src="script.js"></script>
+		<script src="script.js" type="module"></script>
 	</head>
 	<body>
 		<main>

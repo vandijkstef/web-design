@@ -3,6 +3,7 @@
 ## Getting Started
 This project is a static single-page website. To easily include SVG elements, PHP is used to create the page.
 Please make sure to not edit `index.html` directly, but copy-paste the source of the `source.php` file into `index.html`.
+*Requires ES6 Modules*
 
 ## Use Cases
 * View all products
