@@ -9,6 +9,10 @@ $yellow: #FFD311;
 $blue: #00ABD5;
 $blueDark: #009DD3;
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	background-color: $coffeeDark;
 	color: $coffeeLight;
@@ -20,22 +24,45 @@ body {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	& > div {
-		box-sizing: border-box;
 		width: 20em;
-		// background-color: $coffeeLight;
-		border: .8rem solid $coffeeLight;
+		background-color: $coffeeLight;
+		color: $coffeeDark;
+		// border: .8rem solid $coffeeLight;
 		padding: 1rem;
-		// color: $coffeeDark;
+		padding-bottom: 4em;
 		margin-bottom: 2rem;
 		position: relative;
-		margin-top: 16em;
+		margin-top: 14em;
+		border-radius: 3em 1rem 0;
 		.wrap-svg {
-			padding: 2em;
 			position: absolute;
-			top: -17em;
-			left: 60%;
-			transform: translateX(-50%);
-			width: 16em;
+			top: -12em;
+			right: 0;
+			// left: 60%;
+			// transform: translateX(-50%);
+			width: 14em;
+		}
+		button {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			display: block;
+			width: 100%;
+			border-radius: 0 0 0 1rem;
+			font-size: 1.4em;
+			padding: .2em 1.2em;
+		}
+		h3 {
+			font-size: 1.6em;
+			// margin-bottom: 0;
+		}
+		p {
+			font-style: italic;
+			font-size: 1.2em;
+			margin: 0;
+			&::before, &::after {
+				content: '"';
+			}
 		}
 	}
 }

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #553323;
   color: #EDC999;
@@ -11,22 +15,47 @@ body {
 }
 
 #products > div {
-  box-sizing: border-box;
   width: 20em;
-  border: 0.8rem solid #EDC999;
+  background-color: #EDC999;
+  color: #553323;
   padding: 1rem;
+  padding-bottom: 4em;
   margin-bottom: 2rem;
   position: relative;
-  margin-top: 16em;
+  margin-top: 14em;
+  border-radius: 3em 1rem 0;
 }
 
 #products > div .wrap-svg {
-  padding: 2em;
   position: absolute;
-  top: -17em;
-  left: 60%;
-  transform: translateX(-50%);
-  width: 16em;
+  top: -12em;
+  right: 0;
+  width: 14em;
+}
+
+#products > div button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  border-radius: 0 0 0 1rem;
+  font-size: 1.4em;
+  padding: .2em 1.2em;
+}
+
+#products > div h3 {
+  font-size: 1.6em;
+}
+
+#products > div p {
+  font-style: italic;
+  font-size: 1.2em;
+  margin: 0;
+}
+
+#products > div p::before, #products > div p::after {
+  content: '"';
 }
 
 svg .light {
