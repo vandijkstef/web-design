@@ -1,7 +1,7 @@
 const log = console.log;
 
 (() => {
-	let cartTable;
+	let cartTable; 
 	const InitShoppingCart = () => {
 		cartTable = document.querySelector('#cart tbody');
 		document.querySelector('#cart > button').addEventListener('click', SubmitCart);
