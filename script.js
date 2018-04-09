@@ -4,7 +4,7 @@ const log = console.log;
 
 (() => {
 	let cartTable;
-	
+
 	const InitShoppingCart = () => {
 		cartTable = document.querySelector('#cart tbody');
 		document.querySelector('#cart > button').addEventListener('click', SubmitCart);
@@ -68,6 +68,7 @@ const log = console.log;
 	if ('addEventListener' in document && 'querySelector' in document) {
 		document.addEventListener('DOMContentLoaded', () => {
 			if ('classList' in document.body) { // Document.body is available after DOMContentLoaded
+				location.hash = '#store';
 				InitShoppingCart();
 				SetProductButtons();
 				FancySVG();

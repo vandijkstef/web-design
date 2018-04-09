@@ -11,16 +11,65 @@ $blueDark: #009DD3;
 
 $white: rgba(255, 255, 255, 1);
 
+/* Commons */
 * {
 	box-sizing: border-box;
 }
 
+svg {
+	max-width: 100%;
+	height: auto;
+	.light {
+		opacity: .3;
+		animation: glare 4s ease-in-out infinite;
+	}
+}
+
+/* Site */
 body {
 	background-color: $coffeeDark;
 	color: $coffeeLight;
 	font-family: sans-serif;
+	margin: 0;
 }
 
+header {
+	display: flex;
+	align-items: baseline;
+	background-color: $coffeeLight;
+	color: $coffeeDark;
+	margin: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 99;
+	div, a {
+		display: inline-block;
+		width: 5em;
+		margin: .5em 1em;
+	}
+	h1 {
+		font-size: 2.8em;
+		margin-left: 1em;
+		position: relative;
+		top: -.2em;
+		& + div {
+			text-align: right;
+			flex-grow: 99;
+		}
+	}
+}
+
+main {
+	& > section {
+		padding-top: 8em;
+		display: none;
+		&:target {
+			display: block;
+		}
+	}
+}
+
+/* Sections */
 #products {
 	display: flex;
 	flex-wrap: wrap;
@@ -64,19 +113,6 @@ body {
 	}
 }
 
-svg {
-	.light {
-		opacity: .3;
-		animation: glare 4s ease-in-out infinite;
-	}
-}
-
-@keyframes glare {
-	0% { opacity: .3; }
-	50% { opacity: .5; }
-	100% { opacity: .3; }
-}
-
 #cart {
 	table {
 		width: 100%;
@@ -93,8 +129,9 @@ svg {
 	}
 }
 
-svg {
-	max-width: 100%;
-	height: auto;
+/* Animations */
+@keyframes glare {
+	0% { opacity: .3; }
+	50% { opacity: .5; }
+	100% { opacity: .3; }
 }
-
