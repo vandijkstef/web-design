@@ -17,7 +17,9 @@ Please make sure to not edit `index.html` directly, but copy-paste the source of
 ---
 
 ## TODO Ideas
-* Shopping Cart as modal
+* Shopping Cart as overlay
 * Filter
 * Change product amount
 * Remove product from cart
+* Change button to something material-y
+* Optimize responsiveness
