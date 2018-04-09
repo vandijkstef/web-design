@@ -24,16 +24,15 @@ body {
 #products {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-around;
 	& > div {
 		width: 20em;
 		background-color: $coffeeLight;
 		color: $coffeeDark;
 		padding: 1rem;
 		padding-bottom: 4em;
-		margin-bottom: 2rem;
+		margin: 14em 1rem 2rem;
 		position: relative;
-		margin-top: 14em;
 		border-radius: 3em 1rem 0;
 		.wrap-svg {
 			position: absolute;
@@ -81,6 +80,10 @@ svg {
 #cart {
 	table {
 		width: 100%;
+		&, thead, th, td, tr {
+			border: 1px solid black;
+
+		}
 		thead {
 			text-align: left;
 		}

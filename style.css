@@ -11,7 +11,7 @@ body {
 #products {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 #products > div {
@@ -20,9 +20,8 @@ body {
   color: #553323;
   padding: 1rem;
   padding-bottom: 4em;
-  margin-bottom: 2rem;
+  margin: 14em 1rem 2rem;
   position: relative;
-  margin-top: 14em;
   border-radius: 3em 1rem 0;
 }
 
@@ -77,6 +76,10 @@ svg .light {
 
 #cart table {
   width: 100%;
+}
+
+#cart table, #cart table thead, #cart table th, #cart table td, #cart table tr {
+  border: 1px solid black;
 }
 
 #cart table thead {
