@@ -3,6 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Get your coffee order together">
+
 		<title>Beans on Demand</title>
 
 		<link rel="stylesheet" href="style.css">
@@ -66,6 +68,11 @@
 <?php
 function RenderProduct($name, $description, $svg, $category) {
 	$id = urlencode(strtolower(str_replace(' ', '-', $name)));
+	$addN = '';
+	$addNChars = array('a', 'e', 'i', 'o', 'u');
+	if (in_array(strtolower($name[0]), $addNChars)) {
+		$addN = 'n';
+	}
 	echo '
 	<div id="' . $id . '" class="' . $category . '">
 		<h3>' . $name . '</h3>
@@ -73,7 +80,7 @@ function RenderProduct($name, $description, $svg, $category) {
 		<!-- <object data="icons/svg/cake.svg" type="image/svg+xml"></object> -->
 		<div class="wrap-svg">' . file_get_contents('./icons/svg/' . $svg . '.svg') . '</div>
 		<p>' . $description . '</p>
-		<button>Order</button>
+		<button>Get a' . $addN . ' ' . $name . '</button>
 	</div>';
 }
 
