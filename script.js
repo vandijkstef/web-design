@@ -1,7 +1,10 @@
+import UI from './UItools/UItools.js';
+
 const log = console.log;
 
 (() => {
 	let cartTable;
+	
 	const InitShoppingCart = () => {
 		cartTable = document.querySelector('#cart tbody');
 		document.querySelector('#cart > button').addEventListener('click', SubmitCart);
@@ -43,29 +46,18 @@ const log = console.log;
 			currentAmount.innerText = parseInt(currentAmount.innerText) + 1;
 		} else {
 			// .. else render product in cart
-			const cartItem = document.createElement('tr');
-			cartItem.id = 'p-' + product.id;
 			
-			const imageWrapper = document.createElement('td');
-			const productImage = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-			productImage.innerHTML = product.svg;
-			imageWrapper.appendChild(productImage);
-			cartItem.appendChild(imageWrapper);
+			const productSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+			productSVG.innerHTML = product.svg;
+			const productImage = UI.wrap(productSVG, '', '', 'td');
 
-			const productTitle = document.createElement('td');
-			productTitle.innerText = product.title;
-			cartItem.appendChild(productTitle);
+			const productTitle = UI.wrap(product.title, '', '', 'td');
 
-			const description = document.createElement('td');
-			description.innerText = product.description;
-			cartItem.appendChild(description);
+			const description = UI.wrap(product.description, '', '', 'td');
+
+			const amount = UI.wrap('1', 'amount', '', 'td');
 	
-			const amount = document.createElement('td');
-			amount.classList.add('amount');
-			amount.innerText = 1;
-			cartItem.appendChild(amount);
-	
-			cartTable.appendChild(cartItem);
+			UI.renderIn([productImage, productTitle, description, amount], cartTable, 'cart-item', 'p-' + product.id, 'tr');
 		}
 	};
 
