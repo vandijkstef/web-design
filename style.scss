@@ -1,7 +1,65 @@
+$coffeeLight: #EDC999;
+$coffeeDark: #553323;
+
+$grey: #C3C7C9;
+$greyDark: #AFB6BB;
+
+$green: #36C63F;
+$yellow: #FFD311;
+$blue: #00ABD5;
+$blueDark: #009DD3;
+
 body {
-	background-color: white;
+	background-color: $coffeeDark;
+	color: $coffeeLight;
+	font-family: sans-serif;
 }
 
-path {
-	// fill: yellow !important;
+#products {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	& > div {
+		box-sizing: border-box;
+		width: 20em;
+		// background-color: $coffeeLight;
+		border: .8rem solid $coffeeLight;
+		padding: 1rem;
+		// color: $coffeeDark;
+		margin-bottom: 2rem;
+		position: relative;
+		margin-top: 16em;
+		.wrap-svg {
+			padding: 2em;
+			position: absolute;
+			top: -17em;
+			left: 60%;
+			transform: translateX(-50%);
+			width: 16em;
+		}
+	}
 }
+
+svg {
+	.light {
+		opacity: .3; // TODO: Add animation
+	}
+}
+
+#cart {
+	table {
+		width: 100%;
+		thead {
+			text-align: left;
+		}
+		td {
+			max-width: 10em;
+		}
+	}
+}
+
+svg {
+	max-width: 100%;
+	height: auto;
+}
+

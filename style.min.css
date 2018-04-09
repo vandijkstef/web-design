@@ -1,1 +1,1 @@
-body{background-color:white}
+body{background-color:#553323;color:#EDC999;font-family:sans-serif}#products{display:flex;flex-wrap:wrap;justify-content:space-between}#products>div{box-sizing:border-box;width:20em;border:0.8rem solid #EDC999;padding:1rem;margin-bottom:2rem;position:relative;margin-top:16em}#products>div .wrap-svg{padding:2em;position:absolute;top:-17em;left:60%;transform:translateX(-50%);width:16em}svg .light{opacity:.3}#cart table{width:100%}#cart table thead{text-align:left}#cart table td{max-width:10em}svg{max-width:100%;height:auto}

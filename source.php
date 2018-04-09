@@ -11,11 +11,10 @@
 	<body>
 		<main>
 			<h1>Beans on demand</h1>
+			<!-- <section id="filter" class="products">
+				<h3>Filter</h3>
+			</section> -->
 			<section id="products">
-				<h2>Products</h2>
-				<section id="filter" class="products">
-					<h3>Filter</h3>
-				</section>
 				<?php
 					RenderProduct('Coffee', 'Straight up caffination', 'coffee-cup', 'coffee');
 					RenderProduct('Cappuccino', 'A milky sensation', 'cappuccino', 'coffee');
@@ -37,6 +36,25 @@
 			</section>
 			<section id="cart">
 				<h1>Shopping Cart</h1>
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th>Product</th>
+							<th>Description</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr>
+							<td>one</td>
+							<td>one</td>
+							<td>one</td>
+							<td>one</td>
+						</tr> -->
+					</tbody>
+				</table>
+				<button>Pay &amp; Order</button>
 			</section>
 		</main>
 		<footer>
@@ -47,15 +65,15 @@
 
 <?php
 function RenderProduct($name, $description, $svg, $category) {
-	$id = urlencode(strtolower($name));
+	$id = urlencode(strtolower(str_replace(' ', '-', $name)));
 	echo '
 	<div id="' . $id . '" class="' . $category . '">
 		<h3>' . $name . '</h3>
 		<!-- <embed src="icons/svg/cake.svg" type="image/svg+xml" /> -->
 		<!-- <object data="icons/svg/cake.svg" type="image/svg+xml"></object> -->
-		' . file_get_contents('./icons/svg/' . $svg . '.svg') . '
+		<div class="wrap-svg">' . file_get_contents('./icons/svg/' . $svg . '.svg') . '</div>
 		<p>' . $description . '</p>
-		<button data-product="' . $id . '">Order</button>
+		<button>Order</button>
 	</div>';
 }
 
