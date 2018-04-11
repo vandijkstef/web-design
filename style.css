@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none;
+}
+
 svg {
   max-width: 100%;
   height: auto;
@@ -15,8 +19,6 @@ svg .light {
 
 /* Site */
 body {
-  background-color: #553323;
-  color: #EDC999;
   font-family: sans-serif;
   margin: 0;
 }
@@ -24,8 +26,7 @@ body {
 header {
   display: flex;
   align-items: baseline;
-  background-color: #EDC999;
-  color: #553323;
+  background-color: #ecdeaa;
   margin: 0;
   position: fixed;
   width: 100%;
@@ -50,13 +51,33 @@ header h1 + div {
   flex-grow: 99;
 }
 
-main > section {
-  padding-top: 8em;
-  display: none;
+main {
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
 }
 
-main > section:target {
+main > section {
+  width: 100vw;
+  padding-top: 8em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+main > section.hidden {
   display: block;
+}
+
+main > section#cart {
+  min-height: 100vh;
+  background-color: white;
+  left: 100vw;
+}
+
+main > section#cart:not(.hidden) {
+  left: 0;
 }
 
 /* Sections */
@@ -68,10 +89,8 @@ main > section:target {
 
 #products > div {
   width: 20em;
-  background-color: #EDC999;
-  color: #553323;
+  background-color: #ecdeaa;
   padding: 1rem;
-  padding-bottom: 4em;
   margin: 14em 1rem 2rem;
   position: relative;
   border-radius: 3em 1rem 0;
@@ -86,27 +105,51 @@ main > section:target {
 
 #products > div button {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  display: block;
-  width: 100%;
-  border-radius: 0 0 0 1rem;
-  font-size: 1.4em;
-  padding: .2em 1.2em;
+  top: -1em;
+  left: .8em;
+  z-index: 50;
+  background-color: #6a8bb2;
+  color: white;
+  font-family: monospace;
+  border-radius: 100%;
+  font-size: 4.5em;
+  padding: 0 .27em;
+  box-shadow: 0.06em 0.08em 0.1em rgba(0, 0, 0, 0.6);
+  border: none;
+}
+
+#products > div button:focus {
+  outline: none;
+  background-color: #7493b7;
+  box-shadow: 0.09em 0.12em 0.1em rgba(0, 0, 0, 0.6);
+}
+
+#products > div button:active {
+  background-color: #7e9bbc;
+  box-shadow: 0.02em 0.034em 0.1em rgba(0, 0, 0, 0.6);
 }
 
 #products > div h3 {
   font-size: 1.6em;
 }
 
-#products > div p {
+#products > div p.price {
+  opacity: .5;
+}
+
+#products > div p.description {
   font-style: italic;
   font-size: 1.2em;
   margin: 0;
 }
 
-#products > div p::before, #products > div p::after {
+#products > div p.description::before, #products > div p.description::after {
   content: '"';
+}
+
+#cart {
+  position: relative;
+  z-index: 80;
 }
 
 #cart table {

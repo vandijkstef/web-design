@@ -17,9 +17,13 @@ Please make sure to not edit `index.html` directly, but copy-paste the source of
 ---
 
 ## TODO Ideas
-* Shopping Cart as overlay
-* Filter
+* Shopping Cart as overlay -> Animated
 * Change product amount
 * Remove product from cart
+* Filter -> Animated
 * Change button to something material-y
 * Optimize responsiveness
+* Add cart totals
+* Disable cart when empty
+	* Navigate user back to store if he clears his cart
+	* Clear all button in cart

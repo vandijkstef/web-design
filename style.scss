@@ -11,9 +11,20 @@ $blueDark: #009DD3;
 
 $white: rgba(255, 255, 255, 1);
 
+// BeansBased colors
+$light: rgb(236, 222, 170);
+$dark: rgb(62, 48, 48);
+$accentY: rgb(219, 187, 88);
+$accentB: rgb(106, 139, 178);
+$accentR: rgb(215, 70, 38);
+
 /* Commons */
 * {
 	box-sizing: border-box;
+}
+
+.hidden {
+	display: none;
 }
 
 svg {
@@ -27,8 +38,8 @@ svg {
 
 /* Site */
 body {
-	background-color: $coffeeDark;
-	color: $coffeeLight;
+	// background-color: $light;
+	// color: $dark;
 	font-family: sans-serif;
 	margin: 0;
 }
@@ -36,8 +47,8 @@ body {
 header {
 	display: flex;
 	align-items: baseline;
-	background-color: $coffeeLight;
-	color: $coffeeDark;
+	background-color: $light;
+	// color: $light;
 	margin: 0;
 	position: fixed;
 	width: 100%;
@@ -60,11 +71,30 @@ header {
 }
 
 main {
+	min-height: 100vh;
+	max-width: 100vw;
+	overflow-x: hidden;
+	position: relative;
 	& > section {
+		width: 100vw;
 		padding-top: 8em;
-		display: none;
-		&:target {
+		position: absolute;
+		top: 0;
+		left: 0;
+		&.hidden {
 			display: block;
+		}
+		&#cart {
+			min-height: 100vh;
+			background-color: white;
+			left: 100vw;
+			// display: none;
+			&:not(.hidden) {
+				// display: block;
+				// left: 0;
+				// transition: 2s;
+				left: 0;
+			}
 		}
 	}
 }
@@ -76,10 +106,10 @@ main {
 	justify-content: space-around;
 	& > div {
 		width: 20em;
-		background-color: $coffeeLight;
-		color: $coffeeDark;
+		background-color: $light;
+		// color: $coffeeDark;
 		padding: 1rem;
-		padding-bottom: 4em;
+		// padding-bottom: 4em;
 		margin: 14em 1rem 2rem;
 		position: relative;
 		border-radius: 3em 1rem 0;
@@ -91,18 +121,34 @@ main {
 		}
 		button {
 			position: absolute;
-			right: 0;
-			bottom: 0;
-			display: block;
-			width: 100%;
-			border-radius: 0 0 0 1rem;
-			font-size: 1.4em;
-			padding: .2em 1.2em;
+			top: -1em;
+			left: .8em;
+			z-index: 50;
+			background-color: $accentB;
+			color: $white;
+			font-family: monospace;
+			border-radius: 100%;
+			font-size: 4.5em;
+			padding: 0 .27em;
+			box-shadow: 0.06em 0.08em 0.1em rgba(0, 0, 0, 0.6);
+			border: none;
+			&:focus {
+				outline: none;
+				background-color: lighten($accentB, 3);
+				box-shadow: 0.09em 0.12em 0.1em rgba(0, 0, 0, 0.6);
+			}
+			&:active {
+				background-color: lighten($accentB, 6);
+				box-shadow: 0.02em 0.034em 0.1em rgba(0, 0, 0, 0.6);
+			}
 		}
 		h3 {
 			font-size: 1.6em;
 		}
-		p {
+		p.price {
+			opacity: .5;
+		}
+		p.description {
 			font-style: italic;
 			font-size: 1.2em;
 			margin: 0;
@@ -114,6 +160,8 @@ main {
 }
 
 #cart {
+	position: relative;
+	z-index: 80;
 	table {
 		width: 100%;
 		&, thead, th, td, tr {

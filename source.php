@@ -13,11 +13,11 @@
 	<body>
 		<header>
 			<div>
-				<a href="#store"><?php echo file_get_contents('./icons/svg/' . 'coffee-shop' . '.svg'); ?></a>
+				<a id="store" href="#"><?php echo file_get_contents('./icons/svg/' . 'coffee-shop' . '.svg'); ?></a>
 			</div>
 			<h1>Beans on demand</h1>
 			<div>
-				<a href="#cart"><?php echo file_get_contents('./icons/svg/' . 'shopping-cart' . '.svg'); ?></a>
+				<a id="cart" href="#"><?php echo file_get_contents('./icons/svg/' . 'shopping-cart' . '.svg'); ?></a>
 			</div>
 		</header>
 		<main>
@@ -56,17 +56,17 @@
 							<th>Product</th>
 							<th>Description</th>
 							<th>Amount</th>
+							<th>Price</th>
+							<th>Delete</th>
 						</tr>
 					</thead>
 					<tbody>
-						<!-- <tr>
-							<td>one</td>
-							<td>one</td>
-							<td>one</td>
-							<td>one</td>
-						</tr> -->
+						<!-- JS Fills this -->
 					</tbody>
 				</table>
+				<section id="totals">
+					<!-- JS Fills this -->
+				</section>
 				<button>Pay &amp; Order</button>
 			</section>
 		</main>
@@ -77,7 +77,7 @@
 </html>
 
 <?php
-function RenderProduct($name, $description, $svg, $category) {
+function RenderProduct($name, $description, $svg, $category, $price = "1.23") {
 	$id = urlencode(strtolower(str_replace(' ', '-', $name)));
 	$addN = '';
 	$addNChars = array('a', 'e', 'i', 'o', 'u');
@@ -87,11 +87,11 @@ function RenderProduct($name, $description, $svg, $category) {
 	echo '
 	<div id="' . $id . '" class="' . $category . '">
 		<h3>' . $name . '</h3>
-		<!-- <embed src="icons/svg/cake.svg" type="image/svg+xml" /> -->
-		<!-- <object data="icons/svg/cake.svg" type="image/svg+xml"></object> -->
+		<p class="price">&euro; ' . $price . '</p>
+		<button>+</button>
 		<div class="wrap-svg">' . file_get_contents('./icons/svg/' . $svg . '.svg') . '</div>
-		<p>' . $description . '</p>
-		<button>Get a' . $addN . ' ' . $name . '</button>
+		<p class="description">' . $description . '</p>
+		<!-- <button>Get a' . $addN . ' ' . $name . '</button> -->
 	</div>';
 }
 
