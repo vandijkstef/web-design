@@ -54,6 +54,16 @@
 				</section>
 				<section id="totals">
 					<!-- JS Fills this -->
+					<section>
+						<p>Thank you for ordering Beans on Demand. Please choose your payment method</p>
+						<input type="radio" name="payment" value="cash" id="cash">
+						<label for="cash">Cash</label>
+						<input type="radio" name="payment" value="ideal" id="ideal">
+						<label for="ideal">iDeal</label>
+					</section>
+					<section>
+						<button>Order</button>
+					</section>
 				</section>
 				<button>Pay &amp; Order</button>
 			</section>
