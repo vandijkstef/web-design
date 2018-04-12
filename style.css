@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Bad+Script");
 /* Commons */
 * {
   box-sizing: border-box;
@@ -42,6 +43,7 @@ header div, header a {
 header h1 {
   font-size: 2.8em;
   margin-left: 1em;
+  margin-bottom: 0;
   position: relative;
   top: -.2em;
 }
@@ -66,14 +68,18 @@ main > section {
   left: 0;
 }
 
-main > section.hidden {
-  display: block;
+main > section h1 {
+  margin-left: .9rem;
 }
 
 main > section#cart {
   min-height: 100vh;
   background-color: white;
   left: 100vw;
+}
+
+main > section#cart.hidden {
+  display: block;
 }
 
 main > section#cart:not(.hidden) {
@@ -85,19 +91,21 @@ main > section#cart:not(.hidden) {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding: 2em 6em;
 }
 
 #products > div {
-  width: 20em;
+  width: 17em;
   background-color: #ecdeaa;
-  padding: 1rem;
-  margin: 14em 1rem 2rem;
+  padding: 1rem 1rem 0.6rem;
+  margin: 16em 3rem 2rem;
   position: relative;
   border-radius: 3em 1rem 0;
 }
 
 #products > div .wrap-svg {
   position: absolute;
+  z-index: 20;
   top: -12em;
   right: 0;
   width: 14em;
@@ -131,16 +139,23 @@ main > section#cart:not(.hidden) {
 
 #products > div h3 {
   font-size: 1.6em;
+  margin-bottom: 0;
 }
 
-#products > div p.price {
-  opacity: .5;
+#products > div h3 + p {
+  margin-top: .2rem;
+  font-style: italic;
+  font-size: 1.2em;
+  opacity: .35;
 }
 
 #products > div p.description {
-  font-style: italic;
-  font-size: 1.2em;
+  font-family: 'Bad Script', cursive;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
   margin: 0;
+  opacity: .6;
 }
 
 #products > div p.description::before, #products > div p.description::after {
@@ -150,6 +165,89 @@ main > section#cart:not(.hidden) {
 #cart {
   position: relative;
   z-index: 80;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6em;
+  min-height: 14em;
+}
+
+.cart-item.deleting {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+
+.cart-item > div {
+  width: 70%;
+  position: relative;
+}
+
+.cart-item > div div:first-of-type {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+}
+
+.cart-item > div div:first-of-type button {
+  font-size: 2em;
+}
+
+.cart-item > div div:not(:first-of-type) {
+  display: flex;
+  justify-content: center;
+}
+
+.cart-item > div div:last-of-type {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-item > div div:last-of-type button {
+  margin: 2rem 0;
+  font-size: 1.2em;
+}
+
+.cart-item > div div:last-of-type .amount {
+  margin: 2rem 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: .6em .8em;
+}
+
+.cart-item svg {
+  padding-top: 2em;
+}
+
+.cart-item aside {
+  width: 30%;
+  background-color: #EEE;
+  padding-right: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.cart-item aside p {
+  text-align: right;
+  margin-top: 0;
+}
+
+#totals {
+  width: 100%;
+  min-width: 20em;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2rem;
+}
+
+#totals section:first-of-type {
+  padding: 1em 3em 1em 2em;
+  background-color: #eee;
 }
 
 /* Animations */
@@ -183,4 +281,17 @@ main > section#cart:not(.hidden) {
 .shake {
   position: relative;
   animation: shake .3s ease-in-out;
+}
+
+@keyframes succes {
+  0% {
+    background-color: #36C63F;
+  }
+  100% {
+    background-color: #6a8bb2;
+  }
+}
+
+.succes {
+  animation: succes .3s ease-out;
 }
