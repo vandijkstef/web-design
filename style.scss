@@ -162,19 +162,6 @@ main {
 #cart {
 	position: relative;
 	z-index: 80;
-	table {
-		width: 100%;
-		&, thead, th, td, tr {
-			border: 1px solid black;
-
-		}
-		thead {
-			text-align: left;
-		}
-		td {
-			max-width: 10em;
-		}
-	}
 }
 
 /* Animations */
@@ -182,4 +169,24 @@ main {
 	0% { opacity: .3; }
 	50% { opacity: .5; }
 	100% { opacity: .3; }
+}
+
+@keyframes shake {
+	0% {
+		left: 0;
+	}
+	25% {
+		
+		left: -10px;
+	}
+	75% {	
+		left: 10px;
+	}
+	100% {
+		left: 0;
+	}
+}
+.shake {
+	position: relative;
+	animation: shake .3s ease-in-out;
 }

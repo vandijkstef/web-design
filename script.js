@@ -3,10 +3,10 @@ import UI from './UItools/UItools.js';
 const log = console.log;
 
 (() => {
-	let cartTable;
+	let cart;
 
 	const InitShoppingCart = () => {
-		cartTable = document.querySelector('#cart tbody');
+		cart = document.querySelector('#cart #contents');
 		document.querySelector('#cart > button').addEventListener('click', SubmitCart);
 	};
 
@@ -57,21 +57,26 @@ const log = console.log;
 		// Image
 		const productSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 		productSVG.innerHTML = product.svg;
-		content.push(UI.wrap(productSVG, '', '', 'td'));
+		content.push(UI.wrap(productSVG));
 
 		// Product name
-		content.push(UI.wrap(product.title, '', '', 'td'));
+		content.push(UI.wrap(product.title));
 
 		// Description - TODO: Do I need this here?
-		content.push(UI.wrap(product.description, '', '', 'td'));
+		content.push(UI.wrap(product.description));
 
 		// Amount (and interactions)
 		const buttonSub = UI.getButton('-', 'sub');
 		buttonSub.addEventListener('click', (e) => {
 			const amount = e.target.parentElement.querySelector('.amount');
-			amount.innerText = parseInt(amount.innerText) - 1;
-			if (amount.innerText === '0') {
-				DeleteFromCart(e.target.parentElement.parentElement);
+			if (amount.innerText === '1') {
+				// DeleteFromCart(e.target.parentElement.parentElement);
+				e.target.classList.add('shake');
+				setTimeout(() => {
+					e.target.classList.remove('shake');
+				}, 500);
+			} else {
+				amount.innerText = parseInt(amount.innerText) - 1;
 			}
 		});
 		const buttonAdd = UI.getButton('+', 'add');
@@ -79,10 +84,10 @@ const log = console.log;
 			const amount = e.target.parentElement.querySelector('.amount');
 			amount.innerText = parseInt(amount.innerText) + 1;
 		});
-		content.push(UI.wrap([buttonSub, UI.getText('1', 'amount'), buttonAdd], '', '', 'td'));
+		content.push(UI.wrap([buttonSub, UI.getText('1', 'amount'), buttonAdd]));
 
 		// Price
-		content.push(UI.wrap(product.price, '', '', 'td'));
+		content.push(UI.wrap(product.price));
 			
 		// Delete
 		const buttonX = UI.getButton('❌');
@@ -94,9 +99,9 @@ const log = console.log;
 		buttonDelete.addEventListener('click', (e) => {
 			DeleteFromCart(e.target.parentElement.parentElement);
 		});
-		content.push(UI.wrap([buttonX, buttonDelete], '', '', 'td'));
+		content.push(UI.wrap([buttonX, buttonDelete]));
 
-		UI.renderIn(content, cartTable, 'cart-item', 'p-' + product.id, 'tr');
+		UI.renderIn(content, cart, 'cart-item', 'p-' + product.id);
 	};
 
 	const DeleteFromCart = (row) => {

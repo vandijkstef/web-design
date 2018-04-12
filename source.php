@@ -49,21 +49,9 @@
 			</section>
 			<section id="cart">
 				<h1>Shopping Cart</h1>
-				<table>
-					<thead>
-						<tr>
-							<th></th>
-							<th>Product</th>
-							<th>Description</th>
-							<th>Amount</th>
-							<th>Price</th>
-							<th>Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<!-- JS Fills this -->
-					</tbody>
-				</table>
+				<section id="contents">
+					<!-- JS Fills this -->
+				</section>
 				<section id="totals">
 					<!-- JS Fills this -->
 				</section>

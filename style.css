@@ -152,22 +152,6 @@ main > section#cart:not(.hidden) {
   z-index: 80;
 }
 
-#cart table {
-  width: 100%;
-}
-
-#cart table, #cart table thead, #cart table th, #cart table td, #cart table tr {
-  border: 1px solid black;
-}
-
-#cart table thead {
-  text-align: left;
-}
-
-#cart table td {
-  max-width: 10em;
-}
-
 /* Animations */
 @keyframes glare {
   0% {
@@ -179,4 +163,24 @@ main > section#cart:not(.hidden) {
   100% {
     opacity: .3;
   }
+}
+
+@keyframes shake {
+  0% {
+    left: 0;
+  }
+  25% {
+    left: -10px;
+  }
+  75% {
+    left: 10px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+.shake {
+  position: relative;
+  animation: shake .3s ease-in-out;
 }
