@@ -64,6 +64,7 @@ const log = console.log;
 		setTimeout(() => {
 			elements.cart.classList.remove('shake');
 		}, 500);
+		UpdateTotals();
 	};
 
 	const RenderInCart = (product) => {
@@ -89,6 +90,7 @@ const log = console.log;
 
 		// Image
 		const productSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+		// const productSVG = document.createElement('div');
 		productSVG.innerHTML = product.svg;
 		content.push(UI.wrap(productSVG));
 		
@@ -105,11 +107,13 @@ const log = console.log;
 			} else {
 				amount.innerText = parseInt(amount.innerText) - 1;
 			}
+			UpdateTotals();
 		});
 		const buttonAdd = UI.getButton('+', 'add');
 		buttonAdd.addEventListener('click', (e) => {
 			const amount = e.target.parentElement.querySelector('.amount');
 			amount.innerText = parseInt(amount.innerText) + 1;
+			UpdateTotals();
 		});
 		content.push(UI.wrap([buttonSub, UI.getText('1', 'amount'), buttonAdd]));
 
@@ -125,6 +129,7 @@ const log = console.log;
 
 
 		UI.renderIn([UI.wrap(content), UI.wrap(contentSide, '', '', 'aside')], cart, 'cart-item', 'p-' + product.id);
+		
 	};
 
 	const DeleteFromCart = (row) => {
@@ -134,10 +139,31 @@ const log = console.log;
 		if (cart.childElementCount === 0) {
 			elements.storeLink.click();
 		}
+		UpdateTotals();
 	};
 
 	const SubmitCart = () => {
 		log('You just ordered some crap');
+	};
+
+	const UpdateTotals = () => {
+		if (!elements.totals) {
+			elements.totals = {};
+			elements.totals.tax = document.querySelector('.totals .tax .value');
+			elements.totals.total = document.querySelector('.totals .total');
+		}
+		let totalPrice = 0;
+		const cartContents = document.querySelectorAll('#contents > div');
+		cartContents.forEach((item) => {
+			let itemPrice = item.querySelector('aside div:last-of-type p').innerText;
+			itemPrice = parseFloat(itemPrice.split(' ')[1]);
+			let itemAmount = parseFloat(item.querySelector('.amount').innerText);
+			console.log(itemPrice, itemAmount);
+			totalPrice += itemPrice * itemAmount;
+		});
+		console.log(totalPrice);
+		elements.totals.total.innerHTML = `&euro; ${Math.round(totalPrice * 100) / 100}`;
+		elements.totals.tax.innerHTML = `&euro; ${Math.round((totalPrice * 0.06) * 100) / 100}`;
 	};
 	
 	const elements = {};
