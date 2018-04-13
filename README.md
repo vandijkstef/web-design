@@ -27,3 +27,11 @@ Please make sure to not edit `index.html` directly, but copy-paste the source of
 * Disable cart when empty
 	* Navigate user back to store if he clears his cart
 	* Clear all button in cart
+
+
+Notes: 
+Ruimte tussen text groter, teksten vallen weg hierdoor
+Heel veel dezelfde kleuren, alles is hetzelfde voor mij. Geen focus point
+Terug van winkelwagen kan beter
+Winkelwagen misschien nog een text element bij? Of duidelijker dat dit een knop is.
+Veel dezelfde prijzen, beetje raar -> HAHA
