@@ -1,5 +1,6 @@
 # Web Design
 This document describes the design and development process.
+> The actual project is found in [real-time-web-project](https://github.com/vandijkstef/real-time-web-project)
 
 ---
 
