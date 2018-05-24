@@ -14,6 +14,12 @@ Please make sure to not edit `index.html` directly, but copy-paste the source of
 * Edit items in the shopping cart
 * "Pay" the items
 
+## Principals
+Used UI principals and an example:
+
+### #11 Strong visual hierarchies work best
+
+
 ---
 
 ## TODO Ideas
