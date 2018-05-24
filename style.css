@@ -83,6 +83,9 @@ main > section#cart.hidden {
 }
 
 main > section#cart:not(.hidden) {
+  display: block;
+  left: 0;
+  transition: 2s;
   left: 0;
 }
 
@@ -106,9 +109,9 @@ main > section#cart:not(.hidden) {
 #products > div .wrap-svg {
   position: absolute;
   z-index: 20;
-  top: -12em;
+  top: -8em;
   right: 0;
-  width: 14em;
+  width: 10em;
 }
 
 #products > div button {
