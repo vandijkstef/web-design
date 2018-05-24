@@ -19,23 +19,20 @@ Used UI principals and an example:
 
 ### #11 Strong visual hierarchies work best
 
+### #14 Progressive disclosure
+
+### #4 Keep users in control
 
 ---
 
-## TODO Ideas
-* Shopping Cart as overlay -> Animated
-* Change product amount
-* Remove product from cart
-* Filter -> Animated
-* Change button to something material-y
-* Optimize responsiveness
-* Add cart totals
-* Disable cart when empty
-	* Navigate user back to store if he clears his cart
-	* Clear all button in cart
+## TODO
+Kies bank @ ideal keuze
+winkelwagen beter stijlen
+terug vanuit winkelwagen duidelijker maken
+Betere focus point/contrast
+Headerknoppen, meer knoppen maken
 
-
-Notes: 
+## Feedback
 Ruimte tussen text groter, teksten vallen weg hierdoor
 Heel veel dezelfde kleuren, alles is hetzelfde voor mij. Geen focus point
 Terug van winkelwagen kan beter

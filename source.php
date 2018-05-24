@@ -22,28 +22,28 @@
 		</header>
 		<main>
 			<section id="store">
-
+				<h1>What do you want?</h1>
 				<!-- <section id="filter" class="products">
 					<h3>Filter</h3>
 				</section> -->
 				<section id="products">
 					<?php
-						RenderProduct('Coffee', 'Straight up caffination', 'coffee-cup', 'coffee');
-						RenderProduct('Cappuccino', 'A milky sensation', 'cappuccino', 'coffee');
-						RenderProduct('Latte', 'Some coffee, more milk', 'latte', 'coffee');
-						RenderProduct('Espresso', 'Saving water since 1900', 'espresso', 'coffee');
-						RenderProduct('Iced Coffee', 'Hot Coffee, but cold', 'iced-coffee-1', 'coffee');
-						RenderProduct('Mocha Coffee', 'When just coffee doesn\'t do it', 'mocha', 'coffee');
-						RenderProduct('Irish Coffee', 'Unsure if sleepy', 'irish-coffee', 'coffee');
-						RenderProduct('Hot Chocolate', 'Cacaoffee', 'chocolate', 'drinks');
-						RenderProduct('Tea', 'Herbal Coffee', 'tea-cup-3', 'drinks');
-						RenderProduct('Water', 'Coffee without coffee', 'glass-of-water', 'drinks');
-						RenderProduct('Milk', 'Moo!', 'milk', 'drinks');
-						RenderProduct('Cookie Chocolate', 'Om nom nom', 'cookie', 'foods');
-						RenderProduct('Cookie Murican', 'Freedom in dough', 'cookie-1', 'foods');
-						RenderProduct('Doughnut', 'You\'re nuts!', 'doughnut', 'foods');
-						RenderProduct('Muffin', 'Like a cupcake', 'muffin', 'foods');
-						RenderProduct('Toast', 'Baked Bread', 'toast', 'foods');
+						RenderProduct('Coffee', 'Straight up caffination', 'coffee-cup', 'coffee', '2.00');
+						RenderProduct('Cappuccino', 'A milky sensation', 'cappuccino', 'coffee', '2.80');
+						RenderProduct('Latte', 'Some coffee, more milk', 'latte', 'coffee', '2.40');
+						RenderProduct('Espresso', 'Saving water since 1900', 'espresso', 'coffee', '1.80');
+						RenderProduct('Iced Coffee', 'Hot Coffee, but cold', 'iced-coffee-1', 'coffee', '2.20');
+						RenderProduct('Mocha Coffee', 'When just coffee doesn\'t do it', 'mocha', 'coffee', '2.30');
+						RenderProduct('Irish Coffee', 'Unsure if sleepy', 'irish-coffee', 'coffee', '3,50');
+						RenderProduct('Hot Chocolate', 'Cacaoffee', 'chocolate', 'drinks', '3,50');
+						RenderProduct('Tea', 'Herbal Coffee', 'tea-cup-3', 'drinks', '2.00');
+						RenderProduct('Water', 'Coffee without coffee', 'glass-of-water', 'drinks', '1.40');
+						RenderProduct('Milk', 'Moo!', 'milk', 'drinks', '1.00');
+						RenderProduct('Cookie Chocolate', 'Om nom nom', 'cookie', 'foods', '0.50');
+						RenderProduct('Cookie Murican', 'Freedom in dough', 'cookie-1', 'foods', 'freedom');
+						RenderProduct('Doughnut', 'You\'re nuts!', 'doughnut', 'foods', '1.25');
+						RenderProduct('Muffin', 'Like a cupcake', 'muffin', 'foods', '0.60');
+						RenderProduct('Toast', 'Baked Bread', 'toast', 'foods', '0.30');
 					?>
 				</section>
 			</section>
@@ -60,12 +60,17 @@
 						<label for="cash">Cash</label>
 						<input type="radio" name="payment" value="ideal" id="ideal">
 						<label for="ideal">iDeal</label>
+						<div class="totals">
+							<div class="tax">
+								<span class="text">6% BTW</span> <span class="value">&euro; 22.22</span>
+							</div>
+							<div class="total">&euro; 234,56</div>
+						</div>
 					</section>
 					<section>
-						<button>Order</button>
+						<button id="order"><span class="idealonly">Pay &amp; </span>Order</button>
 					</section>
 				</section>
-				<button>Pay &amp; Order</button>
 			</section>
 		</main>
 		<footer>

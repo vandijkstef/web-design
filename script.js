@@ -58,7 +58,6 @@ const log = console.log;
 		// And the cart
 		if (!elements.cart) {
 			elements.cart = document.querySelector('a#cart');
-			console.log(elements.cart);
 		}
 		elements.cart.classList.add('shake');
 		setTimeout(() => {
@@ -126,10 +125,17 @@ const log = console.log;
 		// // Description - TODO: Do I need this here?
 		// content.push(UI.wrap(product.description));
 
-
-
 		UI.renderIn([UI.wrap(content), UI.wrap(contentSide, '', '', 'aside')], cart, 'cart-item', 'p-' + product.id);
+		SetCartButton(true);
 		
+	};
+
+	const GetRadioValue = (radios) => {
+		for (let i = 0; i < radios.length; i++) {
+			if (radios[i].checked) {
+				return radios[i].value;
+			}
+		}
 	};
 
 	const DeleteFromCart = (row) => {
@@ -138,12 +144,21 @@ const log = console.log;
 		cart.removeChild(parent);
 		if (cart.childElementCount === 0) {
 			elements.storeLink.click();
+			SetCartButton(false);
 		}
 		UpdateTotals();
 	};
 
 	const SubmitCart = () => {
 		log('You just ordered some crap');
+	};
+
+	const SetCartButton = (active) => {
+		if (active) {
+			elements.cartLink.classList.remove('hidden');
+		} else {
+			elements.cartLink.classList.add('hidden');
+		}
 	};
 
 	const UpdateTotals = () => {
@@ -172,6 +187,7 @@ const log = console.log;
 			if ('classList' in document.body) { // Document.body is available after DOMContentLoaded
 				elements.storeLink = document.querySelector('a#store');
 				elements.cartLink = document.querySelector('a#cart');
+				SetCartButton(false);
 				elements.storeSection = document.querySelector('section#store');
 				elements.cartSection = document.querySelector('section#cart');
 
@@ -191,6 +207,23 @@ const log = console.log;
 				setTimeout(() => {
 					elements.cartSection.style.transition = '.6s ease-out';
 				}, 500);
+
+				elements.paymentMethod = document.querySelectorAll('input[name=payment]');
+				elements.idealonly = document.querySelectorAll('.idealonly');
+				elements.paymentMethod.forEach((method) => {
+					method.addEventListener('change', () => {
+						const value = GetRadioValue(elements.paymentMethod);
+						if (value == 'ideal') {
+							elements.idealonly.forEach((element) => {
+								element.classList.remove('hidden');
+							});
+						} else {
+							elements.idealonly.forEach((element) => {
+								element.classList.add('hidden');
+							});
+						}
+					});
+				});
 				
 				InitShoppingCart();
 				SetProductButtons();

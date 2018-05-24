@@ -96,9 +96,9 @@ main {
 				display: block;
 			}
 			&:not(.hidden) {
-				// display: block;
-				// left: 0;
-				// transition: 2s;
+				display: block;
+				left: 0;
+				transition: 2s;
 				left: 0;
 			}
 		}
