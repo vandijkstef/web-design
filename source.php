@@ -58,13 +58,15 @@
 						<p>Thank you for ordering Beans on Demand. Please choose your payment method</p>
 						<input type="radio" name="payment" value="cash" id="cash">
 						<label for="cash">Cash</label>
-						<input type="radio" name="payment" value="ideal" id="ideal">
+						<input type="radio" name="payment" value="ideal" id="ideal" checked>
 						<label for="ideal">iDeal</label>
 						<div class="totals">
 							<div class="tax">
-								<span class="text">6% BTW</span> <span class="value">&euro; 22.22</span>
+								<span class="text">6% VAT</span> <span class="value">&euro; 22.22</span>
 							</div>
-							<div class="total">&euro; 234,56</div>
+							<div class="total">
+								<span class="text">Total</span> <span class="value">&euro; 22.22</span>
+							</div>
 						</div>
 					</section>
 					<section>

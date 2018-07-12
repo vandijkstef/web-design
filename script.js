@@ -1,4 +1,5 @@
 import UI from './UItools/UItools.js';
+import UItools from './UItools/UItools.js';
 
 const log = console.log;
 
@@ -45,6 +46,12 @@ const log = console.log;
 			// .. Update amount
 			const currentAmount = currentCartItem.querySelector('.amount');
 			currentAmount.innerText = parseInt(currentAmount.innerText) + 1;
+			const aside = currentCartItem.querySelector('aside');
+			const asideAmount = aside.querySelector('.amount');
+			const asideValue = aside.querySelector('.total');
+			const productPrice = aside.querySelector('.price');
+			asideAmount.innerText = currentAmount.innerText;
+			asideValue.innerHTML = '&euro; ' + (parseInt(currentAmount.innerText) * productPrice.innerText.split(' ')[1]).toFixed(2);
 		} else {
 			// .. else render product in cart
 			RenderInCart(product);
@@ -95,7 +102,7 @@ const log = console.log;
 		
 		// Amount (and interactions)
 		const buttonSub = UI.getButton('-', 'sub');
-		buttonSub.addEventListener('click', (e) => {
+		buttonSub.addEventListener('click', function (e) {
 			const amount = e.target.parentElement.querySelector('.amount');
 			if (amount.innerText === '1') {
 				// DeleteFromCart(e.target.parentElement.parentElement);
@@ -105,13 +112,25 @@ const log = console.log;
 				}, 500);
 			} else {
 				amount.innerText = parseInt(amount.innerText) - 1;
+				const aside = this.parentElement.parentElement.parentElement.querySelector('aside');
+				const asideAmount = aside.querySelector('.amount');
+				const asideValue = aside.querySelector('.total');
+				const productPrice = aside.querySelector('.price');
+				asideAmount.innerText = amount.innerText;
+				asideValue.innerHTML = '&euro; ' + (parseInt(amount.innerText) * productPrice.innerText.split(' ')[1]).toFixed(2);
 			}
 			UpdateTotals();
 		});
 		const buttonAdd = UI.getButton('+', 'add');
-		buttonAdd.addEventListener('click', (e) => {
+		buttonAdd.addEventListener('click', function (e) {
 			const amount = e.target.parentElement.querySelector('.amount');
 			amount.innerText = parseInt(amount.innerText) + 1;
+			const aside = this.parentElement.parentElement.parentElement.querySelector('aside');
+			const asideAmount = aside.querySelector('.amount');
+			const asideValue = aside.querySelector('.total');
+			const productPrice = aside.querySelector('.price');
+			asideAmount.innerText = amount.innerText;
+			asideValue.innerHTML = '&euro; ' + (parseInt(amount.innerText) * productPrice.innerText.split(' ')[1]).toFixed(2);
 			UpdateTotals();
 		});
 		content.push(UI.wrap([buttonSub, UI.getText('1', 'amount'), buttonAdd]));
@@ -120,7 +139,13 @@ const log = console.log;
 		contentSide.push(UI.wrap(product.title));
 		
 		// Price
-		contentSide.push(UI.wrap(product.price));
+		contentSide.push(UI.wrap([
+			UItools.getText('1', 'amount', '', 'span'),
+			UItools.getText(' x ', '', '', 'span'),
+			UItools.getText(product.price, 'price', '', 'span'),
+			UItools.getText(' = ', '', '', 'span'),
+			UItools.getText(product.price, 'total', '', 'span')
+		]));
 
 		// // Description - TODO: Do I need this here?
 		// content.push(UI.wrap(product.description));
@@ -165,20 +190,18 @@ const log = console.log;
 		if (!elements.totals) {
 			elements.totals = {};
 			elements.totals.tax = document.querySelector('.totals .tax .value');
-			elements.totals.total = document.querySelector('.totals .total');
+			elements.totals.total = document.querySelector('.totals .total .value');
 		}
 		let totalPrice = 0;
 		const cartContents = document.querySelectorAll('#contents > div');
 		cartContents.forEach((item) => {
-			let itemPrice = item.querySelector('aside div:last-of-type p').innerText;
+			let itemPrice = item.querySelector('aside .price').innerText;
 			itemPrice = parseFloat(itemPrice.split(' ')[1]);
 			let itemAmount = parseFloat(item.querySelector('.amount').innerText);
-			console.log(itemPrice, itemAmount);
 			totalPrice += itemPrice * itemAmount;
 		});
-		console.log(totalPrice);
-		elements.totals.total.innerHTML = `&euro; ${Math.round(totalPrice * 100) / 100}`;
-		elements.totals.tax.innerHTML = `&euro; ${Math.round((totalPrice * 0.06) * 100) / 100}`;
+		elements.totals.total.innerHTML = `&euro; ${(Math.round(totalPrice * 100) / 100).toFixed(2)}`;
+		elements.totals.tax.innerHTML = `&euro; ${(Math.round((totalPrice * 0.06) * 100) / 100).toFixed(2)}`;
 	};
 	
 	const elements = {};
@@ -196,11 +219,16 @@ const log = console.log;
 					elements.cartSection.classList.add('hidden');
 				});
 				elements.cartLink.addEventListener('click', () => {
-					elements.cartSection.classList.remove('hidden');
-					scrollTo(0,0);
-					setTimeout(() => {
-						elements.storeSection.classList.add('hidden');
-					}, 400);
+					if (elements.cartSection.classList.contains('hidden')) {
+						elements.cartSection.classList.remove('hidden');
+						scrollTo(0,0);
+						setTimeout(() => {
+							elements.storeSection.classList.add('hidden');
+						}, 400);
+					} else {
+						elements.storeSection.classList.remove('hidden');
+						elements.cartSection.classList.add('hidden');
+					}
 				});
 
 				elements.storeLink.click();

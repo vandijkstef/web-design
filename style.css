@@ -168,6 +168,8 @@ main > section#cart:not(.hidden) {
 #cart {
   position: relative;
   z-index: 80;
+  max-width: 50em;
+  margin: 0 auto;
 }
 
 .cart-item {
@@ -178,7 +180,7 @@ main > section#cart:not(.hidden) {
 }
 
 .cart-item.deleting {
-  background-color: rgba(255, 0, 0, 0.7);
+  background-color: rgba(255, 0, 0, 0.2);
 }
 
 .cart-item > div {
@@ -214,11 +216,14 @@ main > section#cart:not(.hidden) {
 .cart-item > div div:last-of-type button {
   margin: 2rem 0;
   font-size: 1.2em;
+  background-color: #553323;
+  color: #EDC999;
 }
 
 .cart-item > div div:last-of-type .amount {
   margin: 2rem 0;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #EDC999;
+  color: #553323;
   padding: .6em .8em;
 }
 
@@ -232,12 +237,27 @@ main > section#cart:not(.hidden) {
   padding-right: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-evenly;
+  text-align: right;
 }
 
 .cart-item aside p {
-  text-align: right;
   margin-top: 0;
+}
+
+.cart-item button {
+  background-color: rgba(175, 182, 187, 0.3);
+  border: 1px solid rgba(237, 201, 153, 0);
+  border-radius: .2rem;
+  transition: .2s;
+}
+
+.cart-item button:focus, .cart-item button:hover {
+  background-color: rgba(175, 182, 187, 0.7);
+}
+
+.cart-item button:focus {
+  border: 1px solid #AFB6BB;
 }
 
 #totals {
@@ -245,12 +265,34 @@ main > section#cart:not(.hidden) {
   min-width: 20em;
   display: flex;
   justify-content: flex-end;
-  padding-right: 2rem;
+}
+
+#totals .totals {
+  text-align: right;
+}
+
+#totals .totals .text {
+  opacity: .5;
 }
 
 #totals section:first-of-type {
   padding: 1em 3em 1em 2em;
   background-color: #eee;
+}
+
+#totals section:last-of-type {
+  display: flex;
+}
+
+#totals section:last-of-type button {
+  font-size: 1.4em;
+  color: white;
+  width: 5em;
+  background-color: #36C63F;
+}
+
+#totals section:last-of-type button:hover, #totals section:last-of-type button:focus {
+  background-color: #48cd51;
 }
 
 /* Animations */
